@@ -13,6 +13,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use("/api/videos", videoRoutes);
 app.use("/api/comments", commentRoutes);
+app.get("/", (req, res) => {
+  res.send("Hello, App is running!!!");
+});
 
 mongoose
   .connect(process.env.MONGO_URI, {
