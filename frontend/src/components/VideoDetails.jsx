@@ -32,7 +32,6 @@ const VideoDetails = () => {
       .post(`${process.env.REACT_APP_INTANCE_URL}api/comments`, payload)
       .then((res) => {
         setComment("");
-
         fetchComments();
       });
   };
@@ -111,14 +110,20 @@ const VideoDetails = () => {
               {comments?.map((comment, index) => (
                 <div className="flex border-2 border=[#303030] ">
                   <p className="p-2 w-[90%]">{comment.comment}</p>
-                  {comment.sentiment === "POSITIVE" ? (
-                    <p className="flex items-center justify-center grow">
-                      <AiOutlineLike />
-                    </p>
+                  {comment.sentiment !== undefined ? (
+                    comment.sentiment === "POSITIVE" ? (
+                      <p className="flex items-center justify-center grow">
+                        <AiOutlineLike />
+                      </p>
+                    ) : comment.sentiment === "NEGATIVE" ? (
+                      <p className="flex items-center justify-center grow">
+                        <AiOutlineDislike />
+                      </p>
+                    ) : (
+                      <p></p>
+                    )
                   ) : (
-                    <p className="flex items-center justify-center grow">
-                      <AiOutlineDislike />
-                    </p>
+                    <p></p>
                   )}
                 </div>
               ))}
@@ -128,7 +133,7 @@ const VideoDetails = () => {
         </div>
         <div className="flex flex-col py-6 px-4 overflow-y-auto lg:w-[350px] xl:w-[400px]">
           {relatedVideos?.map((video, index) => (
-            <SuggestionVideoCard key={index} video={video} />
+            <SuggestionVideoCard key={index} video={video} id={id} />
           ))}
         </div>
       </div>

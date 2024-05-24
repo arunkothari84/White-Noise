@@ -43,12 +43,12 @@ const Upload = () => {
           }
         );
         console.log(response.data); // handle response as needed
-        setIsUploading(response.data.message);
+        alert(response.data.message);
       } catch (error) {
         console.error("Error submitting form:", error);
       }
     }
-    setIsUploading(false);
+    setIsUploading("Submit");
   };
 
   function onClickHandler() {
@@ -106,7 +106,7 @@ const Upload = () => {
           <option value="Rain" className="text-black">
             Rain
           </option>
-          <option value="WaterBodies" className="text-black">
+          <option value="Water Bodies" className="text-black">
             Water Bodies
           </option>
           <option value="Birds" className="text-black">
