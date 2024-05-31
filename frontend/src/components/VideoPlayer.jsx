@@ -27,12 +27,6 @@ const VideoPlayer = ({ src }) => {
           },
         ],
       });
-
-      return () => {
-        if (playerRef.current) {
-          playerRef.current.dispose();
-        }
-      };
     }
   }, [src]);
 
