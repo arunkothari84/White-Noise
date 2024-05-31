@@ -23,6 +23,11 @@ const Feed = () => {
               return <VideoCard key={video?.videoID} video={video} />;
             })}
         </div>
+        {!loading && searchResults.length === 0 && (
+          <div className="flex justify-center items-center w-full h-full font-bold text-2xl p-10  text-white">
+            No videos found in this category, Cant afford much S3 space
+          </div>
+        )}
       </div>
     </div>
   );
